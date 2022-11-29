@@ -6,7 +6,7 @@ namespace StringUtilities
     {
         static void Main(string[] args)
         {
-            string s = "Lou is reallll cool.";
+            string s = "Sam is reallll cool.";
 
             bool unique = s.IsUniqueCharacterSet();
         }
