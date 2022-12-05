@@ -6,29 +6,45 @@ namespace Set
 {
     public class Set<T> : ISet<T>
     {
+        private HashSet<T> hashset;
+
+        public Set()
+        {
+            // do something so bad things don't happen in the future...
+            hashset = new HashSet<T>();
+        }
         public int Size => throw new NotImplementedException();
 
-        public List<T> Elements => throw new NotImplementedException();
+        public List<T> Elements
+        {
+            get
+            {
+                // do work
 
+                // return result
+                return null;
+            }
+        }
+
+        // adding a whole other set to another
         public void Add(ISet<T> s)
         {
-            throw new NotImplementedException();
+            foreach(var t in s)
+            {
+                this.Add(t);
+            }
         }
 
         public void Add(T value)
         {
-            throw new NotImplementedException();
+            hashset.Add(value);
         }
 
         public bool Contains(T value)
         {
-            throw new NotImplementedException();
+            return hashset.Contains(value);
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
 
         public void Remove(ISet<T> s)
         {
@@ -37,12 +53,17 @@ namespace Set
 
         public void Remove(T value)
         {
-            throw new NotImplementedException();
+            hashset.Remove(value);
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return hashset.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
         //method on a class

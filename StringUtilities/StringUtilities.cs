@@ -11,6 +11,8 @@ namespace StringUtilities
             // remove all space chars from string (clean up)
             var cleanString = Regex.Replace(s, @"\s+", "").ToLower();
 
+            //Console.WriteLine(cleanString);
+
             // check for duplicate letters
             HashSet<char> hashSet = new HashSet<char>();
 
