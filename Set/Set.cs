@@ -16,18 +16,13 @@ namespace Set
             // do something so bad things don't happen in the future...
             hashset = new HashSet<T>();
         }
-        public int Size { get; }
+        public int Size => hashset.Count;
 
-        public List<T> Elements
-        {
-            get
-            {
-                // do work
-
-                // return result
-                return null;
-            }
-        }
+        public List<T> Elements => new List<T>(hashset);
+        //{
+            //new List<T>(HashSet) = 
+            //get { return hashset.ToList(); }
+        //}
 
         // adding a whole other set to another
         public void Add(ISet<T> s)
@@ -45,7 +40,12 @@ namespace Set
 
         public bool Contains(T value)
         {
-            return hashset.Contains(value);
+            if(hashset.Contains(value))
+            {
+                //return hashset.Contains(value);
+                return true;
+            }
+            return false;
         }
 
 
@@ -75,17 +75,51 @@ namespace Set
         //method on a class
         public static Set<T> Union(ISet<T> set1, ISet<T> set2)
         {
-            var final = set1.Union(set2).ToArray();
+            //created new list
+            var newList = new Set<T>();
 
-            return null;
+            
+            // add both sets
+            if(newList != null)
+            {
+                newList.Add(set1);
+                newList.Add(set2);
+            }
+            // return 
+            return newList;
+            
         }
 
         public static Set<T> Intersection(ISet<T> set1, ISet<T> set2)
         {
-            //var combined = new HashSet<T>();
-            var final = set1.Intersect(set2).ToArray();
+            var newlist = new Set<T>();
+            var sameNum = new Set<T>();
+            //HashSet<T> set3 = new HashSet<T>();
+            foreach (var t in set1)
+            {
+                if(set2.Contains(t))
+                {
+                    newlist.Add(set1);
+                    sameNum.Add(t);
+                    newlist.Remove(t);
+                }
+                
+            }
+            foreach(var t in set2)
+            {
+                if (set1.Contains(t))
+                {
+                    newlist.Add(set2);
+                    sameNum.Add(t);
+                    newlist.Remove(t);
+                }
+            }
+            return newlist;
 
-            return null;
+            if(newlist != set1 && newlist != set2)
+            {
+                return null;
+            }
         }
     }
 }
