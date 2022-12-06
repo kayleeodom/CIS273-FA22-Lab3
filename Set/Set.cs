@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading;
 
 namespace Set
 {
@@ -13,7 +16,7 @@ namespace Set
             // do something so bad things don't happen in the future...
             hashset = new HashSet<T>();
         }
-        public int Size => throw new NotImplementedException();
+        public int Size { get; }
 
         public List<T> Elements
         {
@@ -48,7 +51,10 @@ namespace Set
 
         public void Remove(ISet<T> s)
         {
-            throw new NotImplementedException();
+            foreach (var t in s)
+            {
+                this.Remove(t);
+            }
         }
 
         public void Remove(T value)
@@ -69,11 +75,16 @@ namespace Set
         //method on a class
         public static Set<T> Union(ISet<T> set1, ISet<T> set2)
         {
+            var final = set1.Union(set2).ToArray();
+
             return null;
         }
 
         public static Set<T> Intersection(ISet<T> set1, ISet<T> set2)
         {
+            //var combined = new HashSet<T>();
+            var final = set1.Intersect(set2).ToArray();
+
             return null;
         }
     }

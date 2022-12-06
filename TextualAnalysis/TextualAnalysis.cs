@@ -13,7 +13,7 @@ namespace TextualAnalysis
         {
         }
 
-
+        // TODO
         public static Dictionary<string, int> ComputeWordFrequencies(string s, bool ignoreStopWords = false)
         {
             var wordCounts = new Dictionary<string, int>();
@@ -28,33 +28,41 @@ namespace TextualAnalysis
 
             string[] stopwords = GetStopWordsFromFile(stopWordFilePath);
 
-
+            
             // foreach word do something
             foreach (var word in words)
             {
-                wordCounts[word] = wordCounts[word] + 1;
-            }
-
                 // if not ignoring stop words and word is a stop word
-                // skip the stop word
+                if(wordCounts.ContainsKey(word))
+                {
+                    // skip the stop word
+                    ignoreStopWords = true;
+                }
                 // else
-                // either add word if new with count of one
-                // or increment the word count if it's already in the dictionary
+                else
+                {
+                    // either add word if new with count of one
+                    // or increment the word count if it's already in the dictionary
+                    wordCounts[word]++;
+                }
 
+            }
             return wordCounts;
         }
 
-
+        // TODO
         public static Dictionary<string, int> ComputeWordFrequenciesFromFile(string path, bool ignoreStopWords = false)
         {
             // read in the file
             string text = System.IO.File.ReadAllText(path);
 
             // call the other method
+            ComputeWordFrequencies(text, ignoreStopWords);
 
+            Dictionary<string, int> wordCounts = null;
             // return the result of the other method
-
-            return null;
+            return wordCounts;
+            //return null;
         }
 
         private static string[] GetStopWordsFromFile(string path)
