@@ -28,25 +28,32 @@ namespace TextualAnalysis
 
             string[] stopwords = GetStopWordsFromFile(stopWordFilePath);
 
-            
+            HashSet<string> wordSet = new HashSet<string>();
             // foreach word do something
-            //foreach (var word in words)
-            //{
-                // if not ignoring stop words and word is a stop word
-                //if(wordCounts.ContainsKey(word))
-                //{
-                    // skip the stop word
-                //    ignoreStopWords = true;
-                //}
-                // else
-                //else
-                //{
-                    // either add word if new with count of one
-                    // or increment the word count if it's already in the dictionary
-                //    wordCounts[word]++;
-                //}
+            foreach (var i in stopwords)
+            {
+                wordSet.Add(i);
 
-            //}
+            }
+            foreach(var w in words)
+            {
+                if(wordSet.Contains(w) && ignoreStopWords == true)
+                {
+                    continue;
+                }
+                else
+                {
+                    if(wordCounts.ContainsKey(w))
+                    {
+                        wordCounts[w]++;
+                    }
+                    else
+                    {
+                        wordCounts.Add(w,1);
+                    }
+
+                }
+            }
             return wordCounts;
         }
 
@@ -57,12 +64,11 @@ namespace TextualAnalysis
             string text = System.IO.File.ReadAllText(path);
 
             // call the other method
-            ComputeWordFrequencies(text, ignoreStopWords);
+            var wordCount = ComputeWordFrequencies(text, ignoreStopWords);
 
             // return the result of the other method
-            Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
             
-            return keyValuePairs;
+            return wordCount;
             
         }
 
