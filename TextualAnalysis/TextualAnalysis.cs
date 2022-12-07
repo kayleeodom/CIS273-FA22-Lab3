@@ -28,16 +28,16 @@ namespace TextualAnalysis
 
             string[] stopwords = GetStopWordsFromFile(stopWordFilePath);
 
-            HashSet<string> wordSet = new HashSet<string>();
+            HashSet<string> newSet = new HashSet<string>();
             // foreach word do something
-            foreach (var i in stopwords)
+            foreach (var k in stopwords)
             {
-                wordSet.Add(i);
+                newSet.Add(k);
 
             }
             foreach(var w in words)
             {
-                if(wordSet.Contains(w) && ignoreStopWords == true)
+                if(newSet.Contains(w) && ignoreStopWords == true)
                 {
                     continue;
                 }
