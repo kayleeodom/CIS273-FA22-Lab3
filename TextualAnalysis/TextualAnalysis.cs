@@ -30,23 +30,23 @@ namespace TextualAnalysis
 
             
             // foreach word do something
-            foreach (var word in words)
-            {
+            //foreach (var word in words)
+            //{
                 // if not ignoring stop words and word is a stop word
-                if(wordCounts.ContainsKey(word))
-                {
+                //if(wordCounts.ContainsKey(word))
+                //{
                     // skip the stop word
-                    ignoreStopWords = true;
-                }
+                //    ignoreStopWords = true;
+                //}
                 // else
-                else
-                {
+                //else
+                //{
                     // either add word if new with count of one
                     // or increment the word count if it's already in the dictionary
-                    wordCounts[word]++;
-                }
+                //    wordCounts[word]++;
+                //}
 
-            }
+            //}
             return wordCounts;
         }
 
@@ -59,10 +59,10 @@ namespace TextualAnalysis
             // call the other method
             ComputeWordFrequencies(text, ignoreStopWords);
 
-            Dictionary<string, int> wordCounts = null;
+            //Dictionary<string, int> wordCounts = null;
             // return the result of the other method
-            return wordCounts;
-            //return null;
+            return null;
+            
         }
 
         private static string[] GetStopWordsFromFile(string path)

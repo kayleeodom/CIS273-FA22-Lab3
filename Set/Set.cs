@@ -92,16 +92,15 @@ namespace Set
 
         public static Set<T> Intersection(ISet<T> set1, ISet<T> set2)
         {
+            
             var newlist = new Set<T>();
-            var sameNum = new Set<T>();
-            //HashSet<T> set3 = new HashSet<T>();
+            
             foreach (var t in set1)
             {
                 if(set2.Contains(t))
                 {
-                    newlist.Add(set1);
-                    sameNum.Add(t);
-                    newlist.Remove(t);
+                    newlist.Add(t);
+                    set2.Remove(t);
                 }
                 
             }
@@ -109,17 +108,12 @@ namespace Set
             {
                 if (set1.Contains(t))
                 {
-                    newlist.Add(set2);
-                    sameNum.Add(t);
-                    newlist.Remove(t);
+                    newlist.Add(t);
+                    set1.Remove(t);
                 }
             }
             return newlist;
 
-            if(newlist != set1 && newlist != set2)
-            {
-                return null;
-            }
         }
     }
 }
