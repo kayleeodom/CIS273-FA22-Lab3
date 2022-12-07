@@ -59,9 +59,10 @@ namespace TextualAnalysis
             // call the other method
             ComputeWordFrequencies(text, ignoreStopWords);
 
-            //Dictionary<string, int> wordCounts = null;
             // return the result of the other method
-            return null;
+            Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
+            
+            return keyValuePairs;
             
         }
 
